@@ -1,0 +1,82 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-15T01:06:10.198551503"><title>Migrations | Learn Laravel</title><script type="application/json" id="virtual-toc-data">[{"id":"criar-uma-migration","level":0,"title":"Criar uma migration","anchor":"#criar-uma-migration"},{"id":"comando-fresh","level":0,"title":"Comando fresh","anchor":"#comando-fresh"},{"id":"indo-al-m","level":0,"title":"Indo Além","anchor":"#indo-al-m"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Migrations | Learn Laravel"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn Laravel Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/10-migrations.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Migrations | Learn Laravel"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/10-migrations.html#webpage",
+    "url": "writerside-documentation/10-migrations.html",
+    "name": "Migrations | Learn Laravel",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn Laravel Help"
+}</script><!-- End Schema.org --></head><body data-id="10 migrations" data-main-title="Migrations" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="mod1"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn Laravel  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="10 migrations" id="10 migrations.md">Migrations</h1><ul class="list _bullet" id="v14s48_3"><li class="list__item" id="v14s48_7"><p>As <span class="control" id="v14s48_12">Migrations</span> funcionam como um versionamento de banco de dados;</p></li><li class="list__item" id="v14s48_8"><p>Podemos <span class="control" id="v14s48_13">avan&ccedil;ar e retroceder</span> a qualquer momento;</p></li><li class="list__item" id="v14s48_9"><p><span class="control" id="v14s48_14">Adicionar colunas e remover</span> de forma mais facilitada;</p></li><li class="list__item" id="v14s48_10"><p>Fazer o setup da base de dados de uma nova instala&ccedil;&atilde;o em apenas um comando;</p></li><li class="list__item" id="v14s48_11"><p>Podemos verificar as migrations com <span class="control" id="v14s48_15">migrate:status</span>;</p></li></ul><section class="chapter"><h2 id="criar-uma-migration" data-toc="criar-uma-migration">Criar uma migration</h2><ul class="list _bullet" id="v14s48_16"><li class="list__item" id="v14s48_19"><p id="v14s48_21">Para criar deve-se usar o Artisan, executando o comando: <code class="code" id="v14s48_22">php artisan make:migration create_product_table</code></p></li><li class="list__item" id="v14s48_20"><p id="v14s48_23">Ao fazer isso, criara uma estrutura b&aacute;sica para a Migration:</p></li></ul><div class="code-block" data-lang="php">
+&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('product', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('product');
+    }
+};
+
+</div><ul class="list _bullet" id="v14s48_18"><li class="list__item" id="v14s48_24"><p id="v14s48_26">O m&eacute;todo <code class="code" id="v14s48_27">up</code> ir&aacute; avan&ccedil;ar a migration</p></li><li class="list__item" id="v14s48_25"><p id="v14s48_28">O m&eacute;todo <code class="code" id="v14s48_29">down</code> vai voltar a migration</p></li></ul></section><section class="chapter"><h2 id="comando-fresh" data-toc="comando-fresh">Comando fresh</h2><ul class="list _bullet" id="v14s48_30"><li class="list__item" id="v14s48_31"><p>Com o uso do comando fresh da migrate &eacute; possivel deletar todas as migrations e</p></li><li class="list__item" id="v14s48_32"><p>em seguida cria-las de novo, uma especie de refresh</p></li><li class="list__item" id="v14s48_33"><p>Comando: <code class="code" id="v14s48_34">php artisan migrate:fresh</code></p></li></ul></section><section class="chapter"><h2 id="indo-al-m" data-toc="indo-al-m">Indo Al&eacute;m</h2><ul class="list _bullet" id="v14s48_35"><li class="list__item" id="v14s48_37"><p>! Quando precisamos adicionar um novo campo na tabela <span class="control" id="v14s48_41">devemos criar uma nova</span> migration !</p></li><li class="list__item" id="v14s48_38"><p>P&oacute;rem devemos tomar cuidado para n&atilde;o rodar o comando <code class="code" id="v14s48_42">fresh</code> e apagar os dados j&aacute; existentes</p></li><li class="list__item" id="v14s48_39"><p>Para voltar alguma migration devemos utilizar o comando <code class="code" id="v14s48_43">rollback</code></p><ul class="list _bullet" id="v14s48_44"><li class="list__item" id="v14s48_45"><p>sintaxe: <code class="code" id="v14s48_47">php artisan migrate:rollback</code>-Para voltar todas as migrations podemos utilizar o comando <code class="code" id="v14s48_48">reset</code></p></li><li class="list__item" id="v14s48_46"><p>sintaxe: <code class="code" id="v14s48_49">php artisan migrate:reset</code></p></li></ul></li><li class="list__item" id="v14s48_40"><p>Pode-se usar <code class="code" id="v14s48_50">refresh</code> para voltar todas e rodar novamente </p><ul class="list _bullet" id="v14s48_51"><li class="list__item" id="v14s48_52"><p>sintaxe: <code class="code" id="v14s48_53">php artisan migrate:refresh</code></p></li></ul></li></ul><section class="chapter"><h3 id="adicionar-coluna-em-uma-tabela" data-toc="adicionar-coluna-em-uma-tabela">Adicionar coluna em uma tabela:</h3><ul class="list _bullet" id="v14s48_54"><li class="list__item" id="v14s48_57"><p id="v14s48_61">Para fazer isso use o comando abaixo: <code class="code" id="v14s48_62">php artisan make:migration add_category_to_products_table</code></p></li><li class="list__item" id="v14s48_58"><p id="v14s48_63">Obs:</p><ul class="list _bullet" id="v14s48_64"><li class="list__item" id="v14s48_65"><p>Ao se criar uma migration para fazer isso deve se ter: <code class="code" id="v14s48_67">add_nomeColuna_to_nomeTabela_table</code></p></li><li class="list__item" id="v14s48_66"><p>Ao se adionar um novo campo a tabela &eacute; criada uma estrutura diferente da <code class="code" id="v14s48_68">create</code> pois agora se estara usando a Schema</p></li></ul></li><li class="list__item" id="v14s48_59"><p id="v14s48_69">Dentro do arquivo criado, escreva dentro da Schema de <code class="code" id="v14s48_71">up</code> adicione o que ir&aacute; acontecer quando a migration rodar</p><ul class="list _bullet" id="v14s48_70"><li class="list__item" id="v14s48_72"><p>ou seja, criar um novo campo <code class="code" id="v14s48_73">$table-&gt;string('category', 100);</code>:</p></li></ul></li><li class="list__item" id="v14s48_60"><p id="v14s48_74">Assim como tamb&eacute;m adicionara dentro da Schmea de <code class="code" id="v14s48_76">down</code> adicione o que ir&aacute; acontecer quando a migration voltar</p><ul class="list _bullet" id="v14s48_75"><li class="list__item" id="v14s48_77"><p>ou seja, adicione <code class="code" id="v14s48_78">$table-&gt;dropColumn('category');</code></p><br><br></li></ul></li></ul><p id="v14s48_55"><code class="code" id="v14s48_81">[codigo de exemplo]</code></p><div class="code-block" data-lang="php">
+&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('products', function (Blueprint $table) {
+          $table-&gt;string('category', 100);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('products', function (Blueprint $table) {
+          $table-&gt;dropColumn('category');
+        });
+    }
+};
+</div></section></section><div class="last-modified">Last modified: 15 março 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="09-connect-database.html" class="navigation-links__prev">Conectando com Banco de Dados</a><a href="11-orm-eloquent.html" class="navigation-links__next">Usando o ORM do Laravel</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

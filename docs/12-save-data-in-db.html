@@ -1,0 +1,67 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-15T01:06:10.192949908"><title>Salvando dados no Database | Learn Laravel</title><script type="application/json" id="virtual-toc-data">[]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Salvando dados no Database | Learn Laravel"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn Laravel Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/12-save-data-in-db.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Salvando dados no Database | Learn Laravel"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/12-save-data-in-db.html#webpage",
+    "url": "writerside-documentation/12-save-data-in-db.html",
+    "name": "Salvando dados no Database | Learn Laravel",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn Laravel Help"
+}</script><!-- End Schema.org --></head><body data-id="12 save data in db" data-main-title="Salvando dados no Database" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="mod1"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn Laravel  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="12 save data in db" id="12 save data in db.md">Salvando dados no Database</h1><ul class="list _bullet" id="-8oevcr_3"><li class="list__item" id="-8oevcr_9"><p>No Laravel &eacute; comum ter uma action espec&iacute;fica para o POST chamada de <span class="control" id="-8oevcr_12">store</span>;</p></li><li class="list__item" id="-8oevcr_10"><p>L&aacute; vamos criar o objeto e compor ele com base nos dados enviados pelo <span class="control" id="-8oevcr_13">POST</span>;</p></li><li class="list__item" id="-8oevcr_11"><p>Com o objeo formado utilizamos o m&eacute;todo <span class="control" id="-8oevcr_14">save</span> para <span class="control" id="-8oevcr_15">persistir</span> os dados;</p></li></ul><ol class="list _decimal" id="-8oevcr_4" type="1"><li class="list__item" id="-8oevcr_16"><p>Deve-se criar a rota que vai receber os dados, o controller e o m&eacute;todo para lidar os dados (sendo a <code class="code" id="-8oevcr_17">store</code>):</p></li></ol><div class="code-block" data-lang="php">
+Route::post('/events', [EventController::class, 'store']);
+</div><ol class="list _decimal" id="-8oevcr_6" type="1" start="2"><li class="list__item" id="-8oevcr_18"><p>Criar o <code class="code" id="-8oevcr_19">form</code> ara enviar os dados:</p></li></ol><div class="code-block" data-lang="markup">
+&lt;form action=&quot;/events&quot; method=&quot;POST&quot;&gt;
+  @csrf
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;title&quot;&gt;Evento:&lt;/label&gt;
+    &lt;input 
+      type=&quot;text&quot; 
+      class=&quot;form-control&quot; 
+      id=&quot;title&quot; 
+      name=&quot;title&quot;
+      placeholder=&quot;Nome do evento&quot; 
+    /&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;title&quot;&gt;Local do evento:&lt;/label&gt;
+    &lt;input 
+      type=&quot;text&quot; 
+      class=&quot;form-control&quot; 
+      id=&quot;city&quot; 
+      name=&quot;city&quot; 
+      placeholder=&quot;Local do evento&quot; 
+    /&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;title&quot;&gt;O evento é privado?&lt;/label&gt;
+    &lt;select name=&quot;private&quot; id=&quot;private&quot; class=&quot;form-control&quot;&gt;
+      &lt;option value=&quot;0&quot;&gt;Não&lt;/option&gt;
+      &lt;option value=&quot;1&quot;&gt;Sim&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label for=&quot;title&quot;&gt;Descrição:&lt;/label&gt;
+    &lt;textarea 
+      name=&quot;description&quot; 
+      id=&quot;description&quot; 
+      cols=&quot;30&quot; 
+      rows=&quot;10&quot;
+      class=&quot;form-control&quot; 
+      placeholder=&quot;O que vai acontecer no evento?&quot; 
+    &gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+
+  &lt;button class=&quot;btn btn-primary&quot;&gt;
+    Criar Evento
+  &lt;/button&gt;
+&lt;/form&gt;
+</div><aside class="prompt" data-type="tip" data-title="" id="-8oevcr_8"><p id="-8oevcr_20">Deve ter a diretiva <code class="code" id="-8oevcr_21">@csrf</code> para que o Laravel possa enviar os dados. J&aacute; que ela &eacute; uma diretiva do Laravel para tratar ataques ao formulario.</p></aside><div class="last-modified">Last modified: 15 março 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="11-orm-eloquent.html" class="navigation-links__prev">Usando o ORM do Laravel</a><a href="13-flash-message.html" class="navigation-links__next">Flash Message</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

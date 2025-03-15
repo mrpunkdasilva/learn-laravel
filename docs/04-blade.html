@@ -1,0 +1,62 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-15T01:06:10.190665916"><title>Blade | Learn Laravel</title><script type="application/json" id="virtual-toc-data">[{"id":"diretivas","level":0,"title":"Diretivas","anchor":"#diretivas"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Blade | Learn Laravel"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn Laravel Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/04-blade.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Blade | Learn Laravel"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/04-blade.html#webpage",
+    "url": "writerside-documentation/04-blade.html",
+    "name": "Blade | Learn Laravel",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn Laravel Help"
+}</script><!-- End Schema.org --></head><body data-id="04 blade" data-main-title="Blade" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="mod1"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn Laravel  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="04 blade" id="04 blade.md">Blade</h1><p id="j0l00g_3">Para come&ccedil;ar o Blade &eacute; uma <span class="control" id="j0l00g_6">template engine</span> do Laravel, sendo ela a padr&atilde;o para o Laravel. Usando ele, as p&aacute;ginas das nossas aplica&ccedil;&otilde;es se <span class="control" id="j0l00g_7">tornam mais din&acirc;micas</span>.</p><p id="j0l00g_4">Inserindo dados que prov&eacute;m do Banco e tamb&eacute;m tags HTML. Ou seja, as Views ser&atilde;o responsabilidade do Blade de se fazer tota a interpreta&ccedil;&atilde;o do template</p><section class="chapter"><h2 id="diretivas" data-toc="diretivas">Diretivas</h2><p id="j0l00g_8"><span class="control" id="j0l00g_39">Exibir dados</span></p><ul class="list _bullet" id="j0l00g_9"><li class="list__item" id="j0l00g_40"><p>Para tal deve-se, usar <code class="code" id="j0l00g_41">{{ code.. }}</code>:</p></li></ul><p id="j0l00g_10"><span class="control" id="j0l00g_42">Sintaxe</span></p><div class="code-block" data-lang="php">
+# Com isso o dado que estiver dentro de $nome será retornado e impresso na View
+&lt;p&gt;{{ $nome }}&lt;/p&gt;
+</div><br><p id="j0l00g_13"><span class="control" id="j0l00g_43">if-else statement</span></p><p id="j0l00g_14"><span class="control" id="j0l00g_44">Sintaxe</span></p><ul class="list _bullet" id="j0l00g_15"><li class="list__item" id="j0l00g_45"><p>Quando se quer usar a diretiva if do blade deve se usar:</p></li></ul><div class="code-block" data-lang="php">
+@if (condition)
+    &lt;p&gt;Code HTML&lt;/p&gt;
+@endif
+</div><ul class="list _bullet" id="j0l00g_17"><li class="list__item" id="j0l00g_46"><p>Quando nas opera&ccedil;&otilde;es l&oacute;gicas &eacute; necessario usar mais de uma condi&ccedil;&atilde;o, ou seja, o else:</p></li><li class="list__item" id="j0l00g_47"></li></ul><p id="j0l00g_18"><span class="control" id="j0l00g_48">Sintaxe</span></p><div class="code-block" data-lang="php">
+@if ($nome === 'Pedro')
+    &lt;p&gt;O nome é Pedro&lt;/p&gt;
+@else
+    &lt;p&gt;O nome não é Pedro&lt;/p&gt;
+@endif
+</div><ul class="list _bullet" id="j0l00g_20"><li class="list__item" id="j0l00g_49"><p>Para casos de varias condicionais, em uma mesma verifica&ccedil;&atilde;o l&oacute;gica usando o elseif:</p></li></ul><p id="j0l00g_21"><span class="control" id="j0l00g_50">Sintaxe</span></p><div class="code-block" data-lang="php">
+@if ($nome === 'Pedro')
+    &lt;p&gt;O nome é pedro&lt;/p&gt;
+@elseif ($nome === 'Gustavo')
+    &lt;p&gt;O nome é Gustavo&lt;/p&gt;
+@else
+    &lt;p&gt;Não sei que nome é&lt;/p&gt;
+@endif
+</div><br><p id="j0l00g_24"><span class="control" id="j0l00g_51">Loop</span></p><p id="j0l00g_25">Podemos criar <span class="control" id="j0l00g_52">estruturas de controle</span> (loops ou mesmo la&ccedil;os de repeti&ccedil;&atilde;o) no Blade;</p><p id="j0l00g_26">Assim como tamb&eacute;m &eacute; possivel executar codigo <span class="control" id="j0l00g_53">PHP Puro</span>, possui uma alta versatilidade e permite chegar em um resultado excelente;</p><ul class="list _bullet" id="j0l00g_27"><li class="list__item" id="j0l00g_54"><p>for-statement</p></li></ul><p id="j0l00g_28"><span class="control" id="j0l00g_55">Sintaxe</span></p><div class="code-block" data-lang="php">
+@for ($i = 0; $i &lt; count($arr); $i++)
+    @if ($i &gt; 2)
+    &lt;p&gt;
+        {{ $arr[$i] }} - {{ $i }}
+    &lt;/p&gt;
+    @endif
+@endfor
+</div><ul class="list _bullet" id="j0l00g_30"><li class="list__item" id="j0l00g_56"><p>foreach-statement</p></li></ul><p id="j0l00g_31"><span class="control" id="j0l00g_57">Sintaxe</span></p><div class="code-block" data-lang="php">
+@foreach ($nomes as $nome)
+    &lt;p&gt;
+        {{ $nome }}
+    &lt;/p&gt;
+@endforeach
+</div><p id="j0l00g_33">Para saber o <code class="code" id="j0l00g_58">index</code> do item do array (collection) use, <code class="code" id="j0l00g_59">$loop-&gt;index</code>:</p><div class="code-block" data-lang="php">
+@foreach ($nomes as $nome)
+    &lt;p&gt;
+    {{ $loop-&gt;index }} - {{ $nome }}
+    &lt;/p&gt;
+@endforeach
+</div><br><p id="j0l00g_36"><span class="control" id="j0l00g_60">Exibir c&oacute;digo PHP puro</span></p><p id="j0l00g_37">Os c&oacute;digos que venham a ser de PHP puramente devem ser colocados entre a diretiva <code class="code" id="j0l00g_61">@php</code></p><div class="code-block" data-lang="php">
+@php
+    $name = 'Punk Junior Silveira';
+    echo $name;
+@endphp
+</div></section><div class="last-modified">Last modified: 15 março 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="03-routes-and-views.html" class="navigation-links__prev">Routes e Views</a><a href="05-static-files.html" class="navigation-links__next">Adicionando arquivos est&aacute;ticos</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

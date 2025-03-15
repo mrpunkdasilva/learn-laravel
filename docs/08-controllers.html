@@ -1,0 +1,39 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-15T01:06:10.189808349"><title>Controllers | Learn Laravel</title><script type="application/json" id="virtual-toc-data">[{"id":"criar-controller-com-artisan","level":0,"title":"Criar Controller com Artisan","anchor":"#criar-controller-com-artisan"},{"id":"usando-o-controller","level":0,"title":"Usando o Controller","anchor":"#usando-o-controller"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Controllers | Learn Laravel"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn Laravel Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/08-controllers.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Controllers | Learn Laravel"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/08-controllers.html#webpage",
+    "url": "writerside-documentation/08-controllers.html",
+    "name": "Controllers | Learn Laravel",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn Laravel Help"
+}</script><!-- End Schema.org --></head><body data-id="08 controllers" data-main-title="Controllers" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="mod1"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn Laravel  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="08 controllers" id="08 controllers.md">Controllers</h1><ul class="list _bullet" id="k0qpkd_3"><li class="list__item" id="k0qpkd_6"><p>Os <span class="control" id="k0qpkd_12">Controllers</span> s&atilde;o parte fundamentais de uma aplica&ccedil;&atilde;o em Laravel;</p></li><li class="list__item" id="k0qpkd_7"><p>Sendo eles geralmente condensam a maior parte da l&oacute;gicada;</p></li><li class="list__item" id="k0qpkd_8"><p>Tem o papel de enviar e esperar respostas (reponses) para as <span class="control" id="k0qpkd_13">Views</span>;</p></li><li class="list__item" id="k0qpkd_9"><p>Os <span class="control" id="k0qpkd_14">Controllers</span> podem ser criados via terminal, ou seja, usando o Artisan;</p></li><li class="list__item" id="k0qpkd_10"><p>&Eacute; comum retornar uma View ou redirecionar para uma <span class="control" id="k0qpkd_15">URL</span> pelo Controller;</p></li><li class="list__item" id="k0qpkd_11"><p>Todo Controller &eacute; uma classe, que por sua vez possu&iacute; atributo, sendo eles nomeados de actions </p><ul class="list _bullet" id="k0qpkd_16"><li class="list__item" id="k0qpkd_17"><p>essas actions s&atilde;o todas as a&ccedil;&otilde;es que o controller pode fazer,</p></li><li class="list__item" id="k0qpkd_18"><p>entenda que o Controller &eacute; a personifica&ccedil;&atilde;o de uma entendida (model)</p></li><li class="list__item" id="k0qpkd_19"><p>ou seja, nele que contar&aacute; a forma como cada Rota, View, Model ser&aacute; gerenciado <span class="control" id="k0qpkd_20">! &eacute; uma conve&ccedil;&atilde;o chamar a primeira action de um Controller de: index</span></p></li></ul></li></ul><section class="chapter"><h2 id="criar-controller-com-artisan" data-toc="criar-controller-com-artisan">Criar Controller com Artisan</h2><ul class="list _bullet" id="k0qpkd_21"><li class="list__item" id="k0qpkd_23"><p id="k0qpkd_25">Para tal, deve-se executar no terminal estando na pasta raiz do projeto o comando:</p><p id="k0qpkd_26"><code class="code" id="k0qpkd_28">php artisan make:controller EventController</code></p><p id="k0qpkd_27"><span class="control" id="k0qpkd_29">! o nome do controller deve ser no singular e deve colocar no final a palavra 'Controller'</span> - exemplo: <code class="code" id="k0qpkd_30">EventController</code></p></li><li class="list__item" id="k0qpkd_24"><p id="k0qpkd_31">O Artisan criara um arquivo com o nome que voc&ecirc; deu ao controller com uma estrura b&aacute;sica:</p></li></ul><div class="code-block" data-lang="php">
+&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class EventController extends Controller
+{
+
+  // actions
+
+}
+</div></section><section class="chapter"><h2 id="usando-o-controller" data-toc="usando-o-controller">Usando o Controller</h2><ul class="list _bullet" id="k0qpkd_32"><li class="list__item" id="k0qpkd_37"><p id="k0qpkd_39">Para usar esse controller j&aacute; criado, devemos importa-lo no arquivo nas Routes</p></li><li class="list__item" id="k0qpkd_38"><p id="k0qpkd_40">Sendo assim deve se importar o mesmo usando, assim ser&aacute; carregado o namesspace do controller:</p></li></ul><div class="code-block" data-lang="php">
+	[routes/web.api]
+
+	use App\Http\Controllers\EventController
+</div><ul class="list _bullet" id="k0qpkd_34"><li class="list__item" id="k0qpkd_41"><p>Ap&oacute;s isso devemos usar ele de fato, para isso a algumas formas como passar um <span class="control" id="k0qpkd_43">array</span></p></li><li class="list__item" id="k0qpkd_42"><p>com o <span class="control" id="k0qpkd_44">controller</span> (Controller:class) desejado e sua <span class="control" id="k0qpkd_45">action</span> ('index') a ser usada;</p></li></ul><p id="k0qpkd_35">* <span class="emphasis" id="k0qpkd_46">Exemplo:</span></p><div class="code-block" data-lang="php">
+[routes/web.api]
+
+use App\Http\Controllers\EventController;
+								 # controller            # action
+Route::get('/', [EventController::class, 'index']);
+</div></section><div class="last-modified">Last modified: 15 março 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="07-retrieving-url-parameters.html" class="navigation-links__prev">Recuperando param&ecirc;tros da URL (Rescuing Parameters)</a><a href="09-connect-database.html" class="navigation-links__next">Conectando com Banco de Dados</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>

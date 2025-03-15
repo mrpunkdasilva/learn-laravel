@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="ll"
+                  name="Learn Laravel" start-page="00 intro.md">
+
+    <toc-element toc-title="mod1">
+        <toc-element topic="00 intro.md"/>
+        <toc-element topic="01 install.md"/>
+        <toc-element topic="02 init-project.md"/>
+        <toc-element topic="03 routes and views.md"/>
+        <toc-element topic="04 blade.md"/>
+        <toc-element topic="05 static files.md"/>
+        <toc-element topic="06 layouts.md"/>
+        <toc-element topic="07 retrieving url parameters.md"/>
+        <toc-element topic="08 controllers.md"/>
+        <toc-element topic="09 connect database.md"/>
+        <toc-element topic="10 migrations.md"/>
+        <toc-element topic="11 orm eloquent.md"/>
+        <toc-element topic="12 save data in db.md"/>
+        <toc-element topic="13 flash message.md"/>
+        <toc-element topic="14 upload_images.md"/>
+        <toc-element topic="15 request_one_register.md"/>
+        <toc-element topic="16 salve_json.md"/>
+        <toc-element topic="17 save_dates.md"/>
+        <toc-element topic="18 search_in_laravel.md"/>
+        <toc-element topic="19 autenticate.md"/>
+        <toc-element toc-title="errors">
+            <toc-element topic="errors.md"/>
+        </toc-element>
+    </toc-element>
+</instance-profile>

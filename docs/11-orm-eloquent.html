@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-03-15T01:06:10.248314617"><title>Usando o ORM do Laravel | Learn Laravel</title><script type="application/json" id="virtual-toc-data">[{"id":"usando-eloquent","level":0,"title":"Usando Eloquent","anchor":"#usando-eloquent"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/logo-primary.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Usando o ORM do Laravel | Learn Laravel"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Learn Laravel Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/11-orm-eloquent.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Usando o ORM do Laravel | Learn Laravel"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/11-orm-eloquent.html#webpage",
+    "url": "writerside-documentation/11-orm-eloquent.html",
+    "name": "Usando o ORM do Laravel | Learn Laravel",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Learn Laravel Help"
+}</script><!-- End Schema.org --></head><body data-id="11 orm eloquent" data-main-title="Usando o ORM do Laravel" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="mod1"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Learn Laravel  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="11 orm eloquent" id="11 orm eloquent.md">Usando o ORM do Laravel</h1><ul class="list _bullet" id="irb5ih_3"><li class="list__item" id="irb5ih_5"><p>Eloquent &eacute; a <span class="control" id="irb5ih_9">ORM</span> do Laravel</p></li><li class="list__item" id="irb5ih_6"><p>Cada tabela tem um <span class="control" id="irb5ih_10">Model</span> que sendo responsavel pelas requisi&ccedil;&otilde;es ao banco</p></li><li class="list__item" id="irb5ih_7"><p>A conven&ccedil;&atilde;o para o Model &eacute; utilizar o nome da <span class="control" id="irb5ih_11">Entidade</span> no singular enquanto que a tabela &eacute; a entidade no plural: </p><ul class="list _bullet" id="irb5ih_12"><li class="list__item" id="irb5ih_13"><p><span class="control" id="irb5ih_14">exemplo:</span> Model -&gt; Event | Tabela -&gt; Events</p></li></ul></li><li class="list__item" id="irb5ih_8"><p>No Model normalmente n&atilde;o se faz muitas altera&ccedil;&otilde;es dos arquivos, <span class="control" id="irb5ih_15">geralmente para configura&ccedil;&otilde;es espec&iacute;ficas</span></p></li></ul><section class="chapter"><h2 id="usando-eloquent" data-toc="usando-eloquent">Usando Eloquent</h2><ul class="list _bullet" id="irb5ih_16"><li class="list__item" id="irb5ih_17"><p id="irb5ih_21">Deve-se importar:</p><ul class="list _bullet" id="irb5ih_22"><li class="list__item" id="irb5ih_23"><p>Sintaxe: <code class="code" id="irb5ih_24">use App\Models\Event;</code></p></li></ul></li><li class="list__item" id="irb5ih_18"><p id="irb5ih_25">Dentro do Controller, chama-se um determinado m&eacute;todo do ORM para obter os dados ou setar eles:</p><div class="code-block" data-lang="php">
+# Chamada do método `all()` que vai resgatar todos os registros da tabela (events) do model (event)
+$events = Event::all();
+</div></li><li class="list__item" id="irb5ih_19"><p id="irb5ih_27">Armazenando e passando para uma View os dados retornados pelo Model:</p><div class="code-block" data-lang="php">
+return view('welcome', ['events' =&gt; $events]);
+</div></li><li class="list__item" id="irb5ih_20"><p id="irb5ih_29">Renderizando o array de dados passados na View:</p><div class="code-block" data-lang="php">
+@foreach($events as $event)
+  &lt;p&gt;
+    {{ $event-&gt;title }} -- {{ $event-&gt;description }}
+  &lt;/p&gt;
+@endforeach
+</div></li></ul></section><div class="last-modified">Last modified: 15 março 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="10-migrations.html" class="navigation-links__prev">Migrations</a><a href="12-save-data-in-db.html" class="navigation-links__next">Salvando dados no Database</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b575/app.js"></script></body></html>
